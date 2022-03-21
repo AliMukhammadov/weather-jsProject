@@ -34,7 +34,7 @@ body {
 
 .overlay {
   position: fixed;
-  height: 782px;
+  height: 100vh;
   width: 100%;
   top: 0;
   left: 0;
@@ -126,6 +126,16 @@ body {
   .min {
     font-size: 13px;
   }
+
+  .overlay {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -162,5 +172,15 @@ body {
   .max,
   .min {
     font-size: 10px;
+  }
+
+  .overlay {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    color: #fff;
   }
 }
