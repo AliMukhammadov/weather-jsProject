@@ -1,20 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: url("./img/weather-js-bg.png");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 .container {
-  background: url("./img/weather-bg.jpg");
-  height: 600px;
-  width: 400px;
-  background-size: cover;
-  background-position: center;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #fff;
+}
+
+.content {
+  border: 3px solid #fff;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.overlay {
+  position: fixed;
+  height: 782px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.search-input {
+  border: none;
+  padding: 10px 20px;
+}
+
+.btn-search {
+  padding: 10px 0px;
+  width: 100px;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+.btn-search:hover {
+  color: #222;
+  background-color: #fff;
+}
+
+.city-name {
+  font-size: 32px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.info {
+  font-size: 24px;
+}
+
+.weather-status {
+  font-size: 18px;
+}
+
+.max,
+.min {
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    width: 100%;
+  }
+
+  .content {
+    width: 300px;
+    height: 300px;
+  }
+
+  .city-name {
+    font-size: 20px;
+  }
+
+  .search-input {
+    padding: 6px 13px;
+  }
+
+  .btn-search {
+    width: 60px;
+    padding: 5px 0px;
+  }
+
+  .info {
+    font-size: 18px;
+  }
+
+  .weather-status {
+    font-size: 13px;
+  }
+
+  .max,
+  .min {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    width: 100%;
+  }
+
+  .content {
+    width: 250px;
+    height: 250px;
+  }
+
+  .city-name {
+    font-size: 16px;
+  }
+
+  .search-input {
+    padding: 4px 10px;
+  }
+
+  .btn-search {
+    width: 45px;
+    padding: 3px 0px;
+  }
+
+  .info {
+    font-size: 15px;
+  }
+
+  .weather-status {
+    font-size: 10px;
+  }
+
+  .max,
+  .min {
+    font-size: 10px;
+  }
 }

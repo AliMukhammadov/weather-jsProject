@@ -9,18 +9,22 @@
 </head>
 <body>
     <div class="container">
+       <div class="content">
         <h1 class="city-name">Tokio, Japan</h1>
         <form action="" class="search-form">
-            <input type="text" class="search-input">
-            <button>Search</button>
+            <input type="text" class="search-input" placeholder="Search a city..." autocomplete="off">
+            <button class="btn-search">Search</button>
         </form>
         <h2 class="info">9℃</h2>
         <h3 class="weather-status">Rainy</h3>
         <h3>
-            <span class="max">Max</span>
+            <span class="max">Max/</span>
             <span class="min">Min</span>
         </h3>
+       </div>
     </div>
+    
+    <div class="overlay hidden">Loading...</div>
 
     <!-- JAVASCRIPT -->
     <script src="app.js"></script>

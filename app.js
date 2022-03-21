@@ -8,6 +8,7 @@ const info = document.querySelector('.info')
 const max = document.querySelector('.max')
 const min = document.querySelector('.min')
 const statusEl = document.querySelector('.weather-status')
+const overlay = document.querySelector(".overlay")
 
 // event
 searchForm.addEventListener('submit' , function(e) {
@@ -18,22 +19,22 @@ searchForm.addEventListener('submit' , function(e) {
 
 
 // functions
-function sendReq (cityName) {
-    fetch(`${api_link}?q=${cityName}&units=metric&appid=${api_key}`)
-    .then((data) => {
-        return data.json()
-    })
-    .then(getData)
-
+async function sendReq(cityName) {
+    overlay.classList.remove('hidden')
+    const req = await fetch(`${api_link}?q=${cityName}&units=metric&appid=${api_key}`,)
+    const data = await req.json()
+    getData(data)
 
     function getData(data) {
+        overlay.classList.add('hidden')
         const weather = data
         console.log(data);
         cityNameEl.innerHTML = `<span>${weather.name}, <span>${weather.sys.country}</span></span>`
         info.textContent = `${weather.main.temp.toFixed(0)}℃`
-        max.textContent = `${Math.ceil(weather.main.temp_max)}`
-        min.textContent = `${Math.ceil(weather.main.temp_min)}`
+        max.textContent = `${Math.ceil(weather.main.temp_max)}℃/`
+        min.textContent = `${Math.ceil(weather.main.temp_min)}℃`
         statusEl.textContent = `${weather.weather[0].main}`
+        searchInput.value = ''
     }
 }
 
