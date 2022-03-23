@@ -45,6 +45,7 @@ body {
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
+  font-size: 30px;
 }
 
 .hidden {
@@ -135,6 +136,7 @@ body {
     left: 0;
     bottom: 0;
     color: #fff;
+    font-size: 25px;
   }
 }
 
@@ -182,5 +184,6 @@ body {
     left: 0;
     bottom: 0;
     color: #fff;
+    font-size: 20px;
   }
 }

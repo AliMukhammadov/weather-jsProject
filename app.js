@@ -17,13 +17,32 @@ searchForm.addEventListener('submit' , function(e) {
     sendReq(nameOfCity)
 })
 
+overlay.addEventListener('click', function() {
+    overlay.classList.add('hidden')
+    overlay.textContent = `Loading...`
+    searchInput.value = ''
+    console.clear();
+})
 
 // functions
 async function sendReq(cityName) {
     overlay.classList.remove('hidden')
-    const req = await fetch(`${api_link}?q=${cityName}&units=metric&appid=${api_key}`,)
-    const data = await req.json()
-    getData(data)
+    try {
+        const req = await fetch(`${api_link}?q=${cityName}&units=metric&appid=${api_key}`,)
+        console.log(req);
+
+        if(req.statusText == 'Unauthorized') {
+            throw new Error('There is a problem with request')
+        } else if (!req.ok) {
+            throw new Error('Invalid name of city')
+        }
+        const data = await req.json()
+        getData(data)
+    } catch(err) {
+        console.log('Problem with try')
+        console.log(err.message);
+        overlay.textContent = `${err.message}`
+    }
 
     function getData(data) {
         overlay.classList.add('hidden')
@@ -31,7 +50,7 @@ async function sendReq(cityName) {
         console.log(data);
         cityNameEl.innerHTML = `<span>${weather.name}, <span>${weather.sys.country}</span></span>`
         info.textContent = `${weather.main.temp.toFixed(0)}℃`
-        max.textContent = `${Math.ceil(weather.main.temp_max)}℃/`
+        max.textContent = `${Math.ceil(weather.main.temp_max)}℃ /`
         min.textContent = `${Math.ceil(weather.main.temp_min)}℃`
         statusEl.textContent = `${weather.weather[0].main}`
         searchInput.value = ''
